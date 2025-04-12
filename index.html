@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONG Cristã</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#facc15',
+            dark: '#000000'
+          },
+          keyframes: {
+            glow: {
+              '0%, 100%': { filter: 'drop-shadow(0 0 5px #facc15)' },
+              '50%': { filter: 'drop-shadow(0 0 15px #facc15)' },
+            },
+            slide: {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-100%)' },
+            }
+          },
+          animation: {
+            glow: 'glow 2s infinite ease-in-out',
+            slide: 'slide 15s linear infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .navbar-scroll {
+      background-color: rgba(0, 0, 0, 0.4);
+      transition: background-color 0.3s ease;
+    }
+    .navbar-scroll:hover {
+      background-color: #facc15;
+    }
+  </style>
+</head>
+<body class="bg-black text-green-400 font-sans">
+  <!-- Navbar -->
+  <!-- <nav class="bg-green-400 text-black fixed top-0 left-0 w-full z-50 transition duration-300"> -->
+<nav class="bg-green-400 text-black fixed top-0 left-0 w-full z-50 transition duration-300" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold px-16">ONG Cristã</h1>
+      <button id="menu-toggle" class="md:hidden focus:outline-none px-16">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <ul id="menu" class="hidden px-16 md:flex space-x-6 items-center">
+        <li><a href="#quem-somos" class="hover:underline">Quem Somos</a></li>
+        <li class="relative group">
+          <button class="hover:underline">Campanhas</button>
+          <ul class="absolute bg-green-400 text-black hidden group-hover:block mt-2 p-2 space-y-2 border border-black">
+            <li><a href="#campanha1" class="block hover:underline">Campanha 1</a></li>
+            <li><a href="#campanha2" class="block hover:underline">Campanha 2</a></li>
+          </ul>
+        </li>
+        <li class="relative group">
+          <button class="hover:underline">Doações</button>
+          <ul class="absolute bg-green-400 text-black hidden group-hover:block mt-2 p-2 space-y-2 border border-black">
+            <li><a href="#doacao1" class="block hover:underline">Doação 1</a></li>
+            <li><a href="#doacao2" class="block hover:underline">Doação 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#contato" class="hover:underline">Contato</a></li>
+      </ul>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-green-400 text-black z-50 transform -translate-x-full transition-transform duration-300 flex flex-col p-6 space-y-4 px-16">
+      <button id="menu-close" class="self-end mb-4">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <a href="#quem-somos" class="hover:underline">Quem Somos</a>
+      <div>
+        <p class="font-bold">Campanhas</p>
+        <a href="#campanha1" class="block hover:underline">Campanha 1</a>
+        <a href="#campanha2" class="block hover:underline">Campanha 2</a>
+      </div>
+      <div>
+        <p class="font-bold">Doações</p>
+        <a href="#doacao1" class="block hover:underline">Doação 1</a>
+        <a href="#doacao2" class="block hover:underline">Doação 2</a>
+      </div>
+      <a href="#contato" class="hover:underline">Contato</a>
+    </div>
+  </nav>
+
+  <!-- Banner Rotativo com Cruz Brilhante -->
+  <section class="relative w-full overflow-hidden">
+    <div class="flex transition-transform duration-500 ease-in-out" id="banner-carousel">
+      <div class="relative w-full flex-shrink-0">
+        <img src="img004.jpg" class="w-full h-80 object-cover">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/cross.png" class="absolute top-4 left-4 h-10 w-10 opacity-20 animate-glow">
+      </div>
+      <div class="relative w-full flex-shrink-0">
+        <img src="peoples.jpg" class="w-full h-80 object-cover">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/cross.png" class="absolute bottom-6 right-10 h-12 w-12 opacity-20 animate-glow">
+      </div>
+      <div class="relative w-full flex-shrink-0">
+        <img src="jesus.png" class="w-full h-80 object-cover">
+        <img src="https://img.icons8.com/ios-filled/100/ffffff/cross.png" class="absolute top-10 right-20 h-8 w-8 opacity-20 animate-glow">
+      </div>
+    </div>
+  </section>
+
+  <section id="quem-somos" class="py-16 px-4 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Quem Somos</h2>
+    <p class="text-green-300">Somos uma organização cristã dedicada a servir e transformar vidas por meio do amor de Cristo.</p>
+  </section>
+
+  <section id="nossos-trabalhos" class="py-16 px-4 max-w-7xl mx-auto mt-24 bg-gradient-to-b from-black to-green-400">
+    <h2 class="text-3xl font-bold mb-8">Nossos Trabalhos</h2>
+    <div class="flex flex-col md:flex-row items-start md:space-x-8">
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <p class="text-lg leading-relaxed text-white">
+          Atuamos em diversas áreas sociais como distribuição de alimentos, apoio espiritual, eventos comunitários,
+          educação e acolhimento. Confira ao lado alguns registros das nossas ações realizadas em comunidades carentes.
+        </p>
+      </div>
+      <div class="md:w-1/2 relative">
+        <div class="overflow-hidden relative">
+          <div id="trabalhos-carousel" class="flex transition-transform duration-500">
+            <!-- Imagens do carousel -->
+            <img src="img001.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img002.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img001.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img002.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img001.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img002.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img001.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img002.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img001.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+            <img src="img002.jpg" class="w-full md:w-1/2 lg:w-full flex-shrink-0 p-2">
+          </div>
+          <!-- Botões -->
+          <button id="prev-trabalho" class="absolute left-0 top-1/2 -translate-y-1/2 bg-green-400 text-black p-2 rounded-full z-10 hover:bg-green-300">
+            &#10094;
+          </button>
+          <button id="next-trabalho" class="absolute right-0 top-1/2 -translate-y-1/2 bg-green-400 text-black p-2 rounded-full z-10 hover:bg-green-300">
+            &#10095;
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos" class="py-16 px-4 max-w-7xl mx-auto relative">
+    <h2 class="text-3xl font-bold mb-8">Vídeos</h2>
+    <div class="relative">
+      <button id="prev-video" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-green-400 text-black p-2 rounded-full shadow-md hover:bg-green-300">
+        &#10094;
+      </button>
+      <div id="video-carousel" class="overflow-hidden relative">
+        <div id="video-track" class="flex transition-transform duration-500">
+          <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-2">
+            <iframe class="w-full h-64" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+          </div>
+          <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-2">
+            <iframe class="w-full h-64" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+          </div>
+          <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-2">
+            <iframe class="w-full h-64" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <button id="next-video" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-green-400 text-black p-2 rounded-full shadow-md hover:bg-green-300">
+        &#10095;
+      </button>
+    </div>
+  </section>
+
+  <section id="noticias" class="py-16 px-4 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Notícias</h2>
+    <p class="text-green-300">Últimas notícias da nossa missão e atividades.</p>
+  </section>
+
+  <!-- Section Contato -->
+  <section id="contato" class="py-16 px-4 max-w-2xl mx-auto bg-green-400 rounded-lg" style="margin-bottom: -20px">
+    <h2 class="text-3xl font-bold mb-4 text-black">Contato</h2>
+    <p class="text-black">Entre em contato conosco pelo e-mail contato@ongcrista.org ou pelo telefone (00) 0000-0000.</p>
+    <form class="bg-black p-6 rounded-lg shadow-lg space-y-6">
+      <div>
+        <label class="block mb-2 text-sm font-medium" for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-green-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+      </div>
+      <div>
+        <label class="block mb-2 text-sm font-medium" for="email">Email</label>
+        <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-green-400 focus:outline-none focus:ring-2 focus:ring-primary" />
+      </div>
+      <div>
+        <label class="block mb-2 text-sm font-medium" for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="4" required class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-green-400 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+      </div>
+      <button type="submit" class="flex items-center gap-2 bg-green-400 text-black font-bold py-2 px-4 rounded hover:bg-green-300 transition">
+        Enviar
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
+    </form>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="bg-green-400 text-black border-t border-green-400 py-8 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div>
+        <h3 class="font-bold text-lg mb-2">Mapa do Site</h3>
+        <ul class="space-y-1">
+          <li><a href="#quem-somos" class="hover:underline">Quem Somos</a></li>
+          <li><a href="#campanha1" class="hover:underline">Campanhas</a></li>
+          <li><a href="#doacao1" class="hover:underline">Doações</a></li>
+          <li><a href="#contato" class="hover:underline">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg mb-2">Redes Sociais</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-green-300">Facebook</a>
+          <a href="#" class="hover:text-green-300">Instagram</a>
+          <a href="#" class="hover:text-green-300">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- [Rodapé igual ao anterior] -->
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuClose = document.getElementById('menu-close');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.remove('-translate-x-full');
+    });
+
+    menuClose.addEventListener('click', () => {
+      mobileMenu.classList.add('-translate-x-full');
+    });
+
+    // Banner carousel simples
+    let bannerIndex = 0;
+    const bannerCarousel = document.getElementById('banner-carousel');
+    setInterval(() => {
+      bannerIndex = (bannerIndex + 1) % 3;
+      bannerCarousel.style.transform = `translateX(-${bannerIndex * 100}%)`;
+    }, 4000);
+
+    const videoTrack = document.getElementById('video-track');
+    const prevBtn = document.getElementById('prev-video');
+    const nextBtn = document.getElementById('next-video');
+    let videoIndex = 0;
+    const videoItems = videoTrack.children.length;
+
+    prevBtn.addEventListener('click', () => {
+      videoIndex = (videoIndex - 1 + videoItems) % videoItems;
+      videoTrack.style.transform = `translateX(-${videoIndex * 100}%)`;
+    });
+
+    nextBtn.addEventListener('click', () => {
+      videoIndex = (videoIndex + 1) % videoItems;
+      videoTrack.style.transform = `translateX(-${videoIndex * 100}%)`;
+    });
+    // Carousel Nossos Trabalhos
+    const trabalhoTrack = document.getElementById('trabalhos-carousel');
+    const prevTrabalho = document.getElementById('prev-trabalho');
+    const nextTrabalho = document.getElementById('next-trabalho');
+    let trabalhoIndex = 0;
+    const trabalhoItems = trabalhoTrack.children.length;
+
+    prevTrabalho.addEventListener('click', () => {
+      trabalhoIndex = (trabalhoIndex - 1 + trabalhoItems) % trabalhoItems;
+      trabalhoTrack.style.transform = `translateX(-${trabalhoIndex * 100}%)`;
+    });
+
+    nextTrabalho.addEventListener('click', () => {
+      trabalhoIndex = (trabalhoIndex + 1) % trabalhoItems;
+      trabalhoTrack.style.transform = `translateX(-${trabalhoIndex * 100}%)`;
+    });
+        // Navbar transparente ao rolar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('navbar-scroll');
+      } else {
+        navbar.classList.remove('navbar-scroll');
+      }
+    });
+  </script>
+</body>
+</html>
